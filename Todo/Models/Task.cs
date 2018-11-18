@@ -1,6 +1,6 @@
 namespace Todo.Models
 {
-    public class TodoItem
+    public class Task
     {
         public int id { get; set; }
         public string name { get; set; }
