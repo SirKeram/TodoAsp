@@ -4,7 +4,8 @@ using Todo.Models;
 
 namespace Todo.Controllers
 {
-    public class TodoController : Controller
+    [Route("api/Todo")]
+    public class TodoController : ControllerBase
     {
         [HttpGet]
         public ActionResult<List<Task>> GetAllTask()
