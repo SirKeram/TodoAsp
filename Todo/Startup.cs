@@ -55,8 +55,8 @@ namespace Todo
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    name: "Home",
+                    template: "{controller=Todo}/{action=Index}/{id?}");
             });
         }
     }
