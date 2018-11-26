@@ -21,7 +21,14 @@ namespace Todo.Controllers
 
         public ActionResult<Task> GetSingleTaskToId(int id)
         {
-            //TODO
+            Task task = _context.TaskList.Find(id);
+
+            if (task == null)
+            {
+                return new NotFoundResult();
+            }
+
+            return task;
         }
 
         public ActionResult<Task> AddTask(Task taskToAdd)
