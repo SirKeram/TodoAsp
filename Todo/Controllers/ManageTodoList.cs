@@ -16,7 +16,7 @@ namespace Todo.Controllers
         
         public ActionResult<List<Task>> GetAllTask()
         {
-            //TODO
+            return _context.TaskList.ToList();
         }
 
         public ActionResult<Task> GetSingleTaskToId(int id)
