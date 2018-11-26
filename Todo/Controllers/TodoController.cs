@@ -28,7 +28,7 @@ namespace Todo.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Task> AddTask(Task taskToAdd)
+        public ActionResult<Task> AddTask([FromBody]Task taskToAdd)
         {
             return _manageTodoList.AddTask(taskToAdd);
         }

@@ -33,7 +33,10 @@ namespace Todo.Controllers
 
         public ActionResult<Task> AddTask(Task taskToAdd)
         {
-            //TODO
+            _context.TaskList.Add(taskToAdd);
+            _context.SaveChanges();
+
+            return GetSingleTaskToId(taskToAdd.id);
         }
 
         public ActionResult<Task> UpdateTask(int id)
