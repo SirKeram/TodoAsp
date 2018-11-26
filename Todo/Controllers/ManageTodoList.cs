@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Todo.Models;
 
@@ -15,27 +16,60 @@ namespace Todo.Controllers
         
         public ActionResult<List<Task>> GetAllTask()
         {
-            //TODO
+            return _context.TaskList.ToList();
         }
 
         public ActionResult<Task> GetSingleTaskToId(int id)
         {
-            //TODO
+            Task task = _context.TaskList.Find(id);
+
+            if (task == null)
+            {
+                return new NotFoundResult();
+            }
+
+            return task;
         }
 
-        public IActionResult AddTask(Task taskToAdd)
+        public ActionResult<Task> AddTask(Task taskToAdd)
         {
-            //TODO
+            _context.TaskList.Add(taskToAdd);
+            _context.SaveChanges();
+
+            return GetSingleTaskToId(taskToAdd.Id);
         }
 
-        public IActionResult UpdateTask(int id)
+        public ActionResult<Task> UpdateTask(int id, Task taskToUpdate)
         {
-            //TODO
+            Task taskToReplace = _context.TaskList.Find(id);
+
+            if (taskToReplace == null)
+            {
+                return new NotFoundResult();
+            }
+
+            taskToReplace.Name = taskToUpdate.Name;
+            taskToReplace.IsComplete = taskToUpdate.IsComplete;
+
+            _context.TaskList.Update(taskToReplace);
+            _context.SaveChanges();
+
+            return new NoContentResult();
         }
 
-        public IActionResult DeleteTask(int id)
+        public ActionResult<Task> DeleteTask(int id)
         {
-            //TODO
+            Task taskToRemove = _context.TaskList.Find(id);
+
+            if (taskToRemove == null)
+            {
+                return new NotFoundResult();
+            }
+
+            _context.TaskList.Remove(taskToRemove);
+            _context.SaveChanges();
+            
+            return new NoContentResult();
         }
     }
 }

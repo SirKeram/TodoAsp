@@ -2,8 +2,8 @@ namespace Todo.Models
 {
     public class Task
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public bool isCompleate { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool IsComplete { get; set; }
     }
 }

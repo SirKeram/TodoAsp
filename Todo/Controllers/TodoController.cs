@@ -9,17 +9,18 @@ namespace Todo.Controllers
     public class TodoController : ControllerBase
     {
         private readonly ManageTodoList _manageTodoList;
+
         public TodoController(TodoContext context)
         {
             _manageTodoList = new ManageTodoList(context);
         }
-        
+
         [HttpGet]
         public ActionResult<List<Task>> GetAllTask()
         {
             return _manageTodoList.GetAllTask();
         }
-        
+
         [HttpGet("{id}")]
         public ActionResult<Task> GetSingleTaskById(int id)
         {
@@ -27,21 +28,22 @@ namespace Todo.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddTask(Task taskToAdd)
+        public ActionResult<Task> AddTask([FromBody]Task taskToAdd)
         {
             return _manageTodoList.AddTask(taskToAdd);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateTask(int id)
+        public ActionResult<Task> UpdateTask(int id, [FromBody]Task taskToUpdate)
         {
-            return _manageTodoList.UpdateTask(id);
+            return _manageTodoList.UpdateTask(id, taskToUpdate);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteTask(int id)
+        public ActionResult<Task> DeleteTask(int id)
         {
             return _manageTodoList.DeleteTask(id);
         }
+        
     }
 }
