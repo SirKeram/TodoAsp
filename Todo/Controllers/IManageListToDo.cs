@@ -8,8 +8,8 @@ namespace Todo.Controllers
     {
         ActionResult<List<Task>> GetAllTask();
         ActionResult<Task> GetSingleTaskToId(int id);
-        IActionResult AddTask(Task taskToAdd);
-        IActionResult UpdateTask(int id);
-        IActionResult DeleteTask(int id);
+        ActionResult<Task> AddTask(Task taskToAdd);
+        ActionResult<Task> UpdateTask(int id);
+        ActionResult<Task> DeleteTask(int id);
     }
 }

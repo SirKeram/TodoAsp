@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Todo.Models;
 
@@ -23,17 +24,17 @@ namespace Todo.Controllers
             //TODO
         }
 
-        public IActionResult AddTask(Task taskToAdd)
+        public ActionResult<Task> AddTask(Task taskToAdd)
         {
             //TODO
         }
 
-        public IActionResult UpdateTask(int id)
+        public ActionResult<Task> UpdateTask(int id)
         {
             //TODO
         }
 
-        public IActionResult DeleteTask(int id)
+        public ActionResult<Task> DeleteTask(int id)
         {
             //TODO
         }
