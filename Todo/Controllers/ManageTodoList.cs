@@ -41,7 +41,20 @@ namespace Todo.Controllers
 
         public ActionResult<Task> UpdateTask(int id, Task taskToUpdate)
         {
-            //TODO
+            Task taskToReplace = _context.TaskList.Find(id);
+
+            if (taskToReplace == null)
+            {
+                return new NotFoundResult();
+            }
+
+            taskToReplace.name = taskToUpdate.name;
+            taskToReplace.isComplete = taskToUpdate.isComplete;
+
+            _context.TaskList.Update(taskToReplace);
+            _context.SaveChanges();
+
+            return new NoContentResult();
         }
 
         public ActionResult<Task> DeleteTask(int id)
