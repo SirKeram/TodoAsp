@@ -36,7 +36,7 @@ namespace Todo.Controllers
             _context.TaskList.Add(taskToAdd);
             _context.SaveChanges();
 
-            return GetSingleTaskToId(taskToAdd.id);
+            return GetSingleTaskToId(taskToAdd.Id);
         }
 
         public ActionResult<Task> UpdateTask(int id, Task taskToUpdate)
@@ -48,8 +48,8 @@ namespace Todo.Controllers
                 return new NotFoundResult();
             }
 
-            taskToReplace.name = taskToUpdate.name;
-            taskToReplace.isComplete = taskToUpdate.isComplete;
+            taskToReplace.Name = taskToUpdate.Name;
+            taskToReplace.IsComplete = taskToUpdate.IsComplete;
 
             _context.TaskList.Update(taskToReplace);
             _context.SaveChanges();
