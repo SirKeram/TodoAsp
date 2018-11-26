@@ -9,7 +9,7 @@ namespace Todo.Controllers
         ActionResult<List<Task>> GetAllTask();
         ActionResult<Task> GetSingleTaskToId(int id);
         ActionResult<Task> AddTask(Task taskToAdd);
-        ActionResult<Task> UpdateTask(int id);
+        ActionResult<Task> UpdateTask(int id, Task taskToUpdate);
         ActionResult<Task> DeleteTask(int id);
     }
 }

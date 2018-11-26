@@ -39,7 +39,7 @@ namespace Todo.Controllers
             return GetSingleTaskToId(taskToAdd.id);
         }
 
-        public ActionResult<Task> UpdateTask(int id)
+        public ActionResult<Task> UpdateTask(int id, Task taskToUpdate)
         {
             //TODO
         }

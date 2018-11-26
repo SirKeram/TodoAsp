@@ -34,9 +34,9 @@ namespace Todo.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Task> UpdateTask(int id)
+        public ActionResult<Task> UpdateTask(int id, [FromBody]Task taskToUpdate)
         {
-            return _manageTodoList.UpdateTask(id);
+            return _manageTodoList.UpdateTask(id, taskToUpdate);
         }
 
         [HttpDelete("{id}")]
