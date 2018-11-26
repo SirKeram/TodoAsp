@@ -43,7 +43,17 @@ namespace Todo.Controllers
 
         public ActionResult<Task> DeleteTask(int id)
         {
-            //TODO
+            Task taskToRemove = _context.TaskList.Find(id);
+
+            if (taskToRemove == null)
+            {
+                return new NotFoundResult();
+            }
+
+            _context.TaskList.Remove(taskToRemove);
+            _context.SaveChanges();
+            
+            return new NoContentResult();
         }
     }
 }
